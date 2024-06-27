@@ -1,0 +1,44 @@
+version: 1
+formatters:
+  simple:
+    format: '%(asctime)-8s %(name)-16s %(levelname)-8s %(message)s'
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: INFO
+    formatter: simple
+    stream: ext://sys.stdout
+  debugfile:
+    class : logging.handlers.TimedRotatingFileHandler
+    formatter: simple
+    level: DEBUG
+    filename: logs/debug.log
+    when: 'D'
+    backupCount: 7
+  errfile:
+    class : logging.handlers.TimedRotatingFileHandler
+    level: WARNING
+    formatter: simple
+    filename: logs/err.log
+    when: 'D'
+    backupCount: 1
+loggers:
+  main:
+    level: DEBUG
+    handlers: [debugfile,errfile]
+    propagate: no
+  db:
+    level: DEBUG
+    handlers: [debugfile,errfile]
+    propagate: no
+  aliStreamReply:
+    level: DEBUG
+    handlers: [debugfile,errfile]
+    propagate: no
+  autoReplay:
+    level: DEBUG
+    handlers: [debugfile,errfile]
+    propagate: no
+root:
+  level: DEBUG
+  handlers: [console]

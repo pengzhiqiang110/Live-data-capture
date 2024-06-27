@@ -1,0 +1,14 @@
+selenium
+openai
+fastapi
+llama-index
+mysql-connector-python
+uvicorn
+pyjwt
+webdriver_manager
+objgraph
+psutil
+pympler
+guppy3
+logging
+PyYAML
